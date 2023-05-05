@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import api from './api';
+import api from './api/api';
 import Database from './database/database';
 
 const app: Application = express();

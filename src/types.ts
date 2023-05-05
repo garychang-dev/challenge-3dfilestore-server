@@ -5,10 +5,10 @@ export type ObjFile = {
   size: number;
 };
 
-export type FileData = {
+export type StorageFileData = {
 	id?: string;
 	originalFilename: string;
-	storedFilename: string;
+	storageFilename: string;
 	storagePath: string;
 	storageDate: Date;
 	size: number;

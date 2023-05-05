@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+import FileModel from './fileModel';
+import { StorageFileData } from '../types';
+
 export default class Database {
   public static async initialize(): Promise<void> {
     try {
@@ -8,5 +11,18 @@ export default class Database {
     } catch (err) {
       console.log('MongoDB connection error: ', err);
     }
+  }
+
+  public static async insertFileData(data: StorageFileData) {
+    const fileModel = new FileModel({
+      originalFilename: data.originalFilename,
+      storageFilename: data.storageFilename,
+      storagePath: data.storagePath,
+      storageDate: data.storageDate,
+      size: data.size,
+    });
+
+    const savedData = await fileModel.save();
+    return savedData.toObject();
   }
 }
