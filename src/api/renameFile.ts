@@ -13,8 +13,9 @@ const renameFile = async (req: Request, res: Response): Promise<void> => {
           creation_date: renamedFileData.storageDate || new Date(0),
           size: renamedFileData.size || 0
         };
-        res.json(output);
+
         console.log('Rename file successful: ', output);
+        res.json(output);
     } else {
         throw new Error('Missing params fieldId or newName');
     }

@@ -11,6 +11,8 @@ const listFiles = async (req: Request, res: Response): Promise<void> => {
         creation_date: file.storageDate || new Date(0),
         size: file.size || 0
     }));
+
+    console.log('List files success: ', output);
     res.json(output);
 };
 

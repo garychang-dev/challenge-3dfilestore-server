@@ -21,7 +21,7 @@ const recordFile = async (req: Request, res: Response): Promise<void> => {
       size: savedData.size || 0,
     }
 
-    console.log('Recorded file: ', output);
+    console.log('Record file success: ', output);
     res.json(output);
   } else {
     throw new Error('Unable to record file data to database');
