@@ -38,7 +38,7 @@ export default class Database {
       const savedData = await fileModel.save();
       return savedData.toObject();
     } catch (err) {
-      console.log('Unable to save data: ', err);
+      console.log('Unable to save file data in database: ', err);
       throw err;
     }
   }
@@ -58,7 +58,7 @@ export default class Database {
       const savedFileData = await fileData.save();
       return savedFileData.toObject();
     } catch (err) {
-      console.log('Unable to rename file: ', err);
+      console.log('Unable to rename file in database: ', err);
       throw err;
     }
   }

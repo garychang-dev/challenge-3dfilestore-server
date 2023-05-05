@@ -4,7 +4,14 @@ import { StorageFileData, ObjFile } from '../types';
 import Database from '../database/database';
 
 const recordFile = async (req: Request, res: Response): Promise<void> => {
-  if (req.file) {
+  if (!req.file) {
+    
+    console.log('Missing file param');
+    res.sendStatus(500);
+    return Promise.reject(new Error('Missing file param'));
+  }
+
+  try {
     const fileData: StorageFileData = {
       realFilename: req.file.originalname,
       storageFilename: req.file.filename,
@@ -23,8 +30,9 @@ const recordFile = async (req: Request, res: Response): Promise<void> => {
 
     console.log('Record file success: ', output);
     res.json(output);
-  } else {
-    throw new Error('Unable to record file data to database');
+  } catch (err) {
+    console.log('Unable to record file: ', err);
+    res.sendStatus(500);
   }
 };
 
