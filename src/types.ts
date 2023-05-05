@@ -6,10 +6,16 @@ export type ObjFile = {
 };
 
 export type StorageFileData = {
-	id?: string;
-	realFilename: string;
-	storageFilename: string;
-	storagePath: string;
-	storageDate: Date;
-	size: number;
+  id?: string;
+  realFilename: string;
+  storageFilename: string;
+  storagePath: string;
+  storageDate: Date;
+  size: number;
+}
+
+export type Vector3 = {
+  x: number;
+  y: number;
+  z: number;
 }
