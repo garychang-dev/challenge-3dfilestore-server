@@ -13,9 +13,10 @@ const downloadFile = async (req: Request, res: Response): Promise<void> => {
     // Get the stored file path first
     const foundFile = await Database.getOneFile(fileId as string);
     const storedFilePath = foundFile?.storagePath;
+    const realFilename = foundFile?.realFilename;
 
-    if (storedFilePath) {
-      res.download(storedFilePath);
+    if (storedFilePath && realFilename) {
+      res.download(storedFilePath, realFilename);
     } else {
       console.log('Unable to locate file to download');
       res.sendStatus(404);
