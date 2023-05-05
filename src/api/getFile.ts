@@ -6,7 +6,7 @@ import Database from '../database/database';
 const getFile = async (req: Request, res: Response): Promise<void> => {
   if (!req.body.fileId) {
     console.log('Missing fileId param');
-    res.sendStatus(400);
+    res.sendStatus(404);
     return Promise.reject();
   }
 
@@ -24,7 +24,7 @@ const getFile = async (req: Request, res: Response): Promise<void> => {
       res.json(output);
     } else {
       console.log('File not found in database');
-      res.sendStatus(400);
+      res.sendStatus(404);
     }
   } catch (err) {
     console.log('Unable to get file: ', err);
