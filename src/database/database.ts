@@ -13,16 +13,33 @@ export default class Database {
     }
   }
 
-  public static async insertFileData(data: StorageFileData) {
-    const fileModel = new FileModel({
-      realFilename: data.realFilename,
-      storageFilename: data.storageFilename,
-      storagePath: data.storagePath,
-      storageDate: data.storageDate,
-      size: data.size,
-    });
+  public static async readFiles() {
+    // NOTE: This is not scalable, but it will do for this exercise.
+    //       To improve this, we could introduce pagination.
+    try {
+      const foundFiles = await FileModel.find().exec();
+      return foundFiles.map(x => x.toObject());
+    } catch (err) {
+      console.log('Unable to find files in database: ', err);
+      throw err;
+    }
+  }
 
-    const savedData = await fileModel.save();
-    return savedData.toObject();
+  public static async insertFileData(data: StorageFileData) {
+    try {
+      const fileModel = new FileModel({
+        realFilename: data.realFilename,
+        storageFilename: data.storageFilename,
+        storagePath: data.storagePath,
+        storageDate: data.storageDate,
+        size: data.size,
+      });
+      
+      const savedData = await fileModel.save();
+      return savedData.toObject();
+    } catch (err) {
+      console.log('Unable to save data: ', err);
+      throw err;
+    }
   }
 }

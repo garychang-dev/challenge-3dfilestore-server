@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { StorageFileData, ObjFile } from '../types';
 import Database from '../database/database';
 
-const recordFile = async (req: Request, res: Response) => {
+const recordFile = async (req: Request, res: Response): Promise<void> => {
   if (req.file) {
     const fileData: StorageFileData = {
       realFilename: req.file.originalname,
