@@ -6,6 +6,7 @@ import path from 'path';
 import recordFile from './recordFile';
 import listFiles from './listFiles';
 import renameFile from './renameFile';
+import deleteFile from './deleteFile';
 
 const router = express.Router();
 
@@ -15,6 +16,6 @@ const upload = multer({dest: uploadPath });
 router.get('/listFiles', listFiles);
 router.post('/uploadFile', upload.single('file'), recordFile);
 router.put('/renameFile', renameFile);
-
+router.delete('/deleteFile', deleteFile);
 
 export default router;

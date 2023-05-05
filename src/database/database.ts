@@ -72,4 +72,13 @@ export default class Database {
       throw err;
     }
   }
+
+  public static async deleteFile(fileId: string): Promise<void> {
+    try {
+      await FileModel.deleteOne({_id: fileId}).exec();
+    } catch (err) {
+      console.log('Unable to delete file data from database: ', fileId );
+      throw err;
+    }
+  }
 }
