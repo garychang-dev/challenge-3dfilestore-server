@@ -4,10 +4,9 @@ import { ObjFile } from '../types';
 import Database from '../database/database';
 
 const renameFile = async (req: Request, res: Response): Promise<void> => {
-
     if (!req.body.fileId || !req.body.newName) {
       console.log('Missing fieldId or newName params');
-      res.sendStatus(500);
+      res.sendStatus(400);
       return Promise.reject(new Error('Missing fileId or newName'));
     }
 

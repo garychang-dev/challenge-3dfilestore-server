@@ -5,9 +5,8 @@ import Database from '../database/database';
 
 const recordFile = async (req: Request, res: Response): Promise<void> => {
   if (!req.file) {
-    
     console.log('Missing file param');
-    res.sendStatus(500);
+    res.sendStatus(400);
     return Promise.reject(new Error('Missing file param'));
   }
 
