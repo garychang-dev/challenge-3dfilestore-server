@@ -12,3 +12,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/', api)
+
+app.listen(port, () => {
+  console.log(`App is listening on port ${port}`)
+});
