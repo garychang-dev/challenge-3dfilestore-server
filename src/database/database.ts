@@ -27,7 +27,7 @@ export default class Database {
 
   public static async getOneFile(fileId: string) {
     try {
-      const foundFileData = await FileModel.findOne({_id:fileId}).exec();
+      const foundFileData = await FileModel.findOne({ _id: fileId }).exec();
       return foundFileData?.toObject();
     } catch (err) {
       console.log('Unable to find one file data in database: ', err);
