@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: 3dfilestore Server API
+  version: 0.0.1
+
+paths:
+  /listFiles:
+    get:
+      summary: List all files in storage
+      responses:
+        '200':
+          descrption: A JSON array containing file data
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    creation_date:
+                      type: string
+                      format: date
+                    size:
+                      type: integer
+  /renameFile:
+    put:
+      summary: Rename a file in storage
+      responses:
+        '200':
+          description: File is successfully renamed
+  /deleteFile:
+    delete:
+      summary: Remove a file from storage
+      responses:
+        '200':
+          description: File is successfully removed
+  /uploadFile:
+    get:
+      summary: Upload a file to storage
+  /downloadFile:
+    get:
+      summary: Download a file from storage
+  /transformFile:
+    get:
+      summary: Apply vector transformations to a file and download it
