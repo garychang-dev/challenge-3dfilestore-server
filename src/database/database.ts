@@ -34,11 +34,31 @@ export default class Database {
         storageDate: data.storageDate,
         size: data.size,
       });
-      
+
       const savedData = await fileModel.save();
       return savedData.toObject();
     } catch (err) {
       console.log('Unable to save data: ', err);
+      throw err;
+    }
+  }
+
+  public static async renameFile(fileId: string, newName: string) {
+    try {
+      // NOTE: We could use FileModel.updateOne(),
+      //       but it doesn't seem like we can get the updated file from the result directly.
+      //       So, here we simply use findOne() and save().
+
+      const fileData = await FileModel.findOne({ _id: fileId }).exec();
+      if (!fileData) {
+        throw new Error('Unable to find the file that needs to be renamed');
+      }
+
+      fileData.realFilename = newName;
+      const savedFileData = await fileData.save();
+      return savedFileData.toObject();
+    } catch (err) {
+      console.log('Unable to rename file: ', err);
       throw err;
     }
   }
