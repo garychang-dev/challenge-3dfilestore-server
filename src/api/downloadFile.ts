@@ -2,16 +2,16 @@ import { Request, Response } from 'express'
 import Database from '../database/database';
 
 const downloadFile = async (req: Request, res: Response): Promise<void> => {
-  const fileId = req.query.fileId as string;
+  const fileId = req.query.fileId;
   if (!fileId) {
     console.log('Missing fileId param');
     res.sendStatus(404);
-    return Promise.reject();
+    return;
   }
 
   try {
     // Get the stored file path first
-    const foundFile = await Database.getOneFile(fileId);
+    const foundFile = await Database.getOneFile(fileId as string);
     const storedFilePath = foundFile?.storagePath;
 
     if (storedFilePath) {

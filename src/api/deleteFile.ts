@@ -6,7 +6,7 @@ const deleteFile = async (req: Request, res: Response): Promise<void> => {
   if (!req.body.fileId) {
     console.log('Missing fileId param');
     res.sendStatus(404);
-    return Promise.reject();
+    return;
   }
 
   try {
