@@ -6,7 +6,7 @@ import Database from '../database/database';
 const recordFile = async (req: Request, res: Response) => {
   if (req.file) {
     const fileData: StorageFileData = {
-      originalFilename: req.file.originalname,
+      realFilename: req.file.originalname,
       storageFilename: req.file.filename,
       storagePath: req.file.path,
       storageDate: new Date(),
@@ -16,7 +16,7 @@ const recordFile = async (req: Request, res: Response) => {
     const savedData = await Database.insertFileData(fileData);
     const output: ObjFile = {
       id: savedData._id.toString(),
-      name: savedData.originalFilename || '',
+      name: savedData.realFilename || '',
       creation_date: savedData.storageDate || new Date(0),
       size: savedData.size || 0,
     }

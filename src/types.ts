@@ -7,7 +7,7 @@ export type ObjFile = {
 
 export type StorageFileData = {
 	id?: string;
-	originalFilename: string;
+	realFilename: string;
 	storageFilename: string;
 	storagePath: string;
 	storageDate: Date;

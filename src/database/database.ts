@@ -15,7 +15,7 @@ export default class Database {
 
   public static async insertFileData(data: StorageFileData) {
     const fileModel = new FileModel({
-      originalFilename: data.originalFilename,
+      realFilename: data.realFilename,
       storageFilename: data.storageFilename,
       storagePath: data.storagePath,
       storageDate: data.storageDate,
