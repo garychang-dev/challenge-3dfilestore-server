@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import api from './api';
+import Database from './database/database';
 
 const app: Application = express();
 const port: number = 3333;
@@ -16,3 +17,5 @@ app.use('/', api)
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)
 });
+
+Database.initialize();

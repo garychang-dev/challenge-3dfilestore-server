@@ -1,0 +1,7 @@
+version: '1'
+services:
+  mongodb:
+    image: mongo:6.0.5-jammy
+    container_name: 3dfilestore-mongodb
+    ports:
+      - '27017:27017'
