@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import Database from '../database/database';
 
 const downloadFile = async (req: Request, res: Response): Promise<void> => {
-  const fileId = req.query.fileId;
+  const fileId = req.params.fileId;
   if (!fileId) {
     console.log('Missing fileId param');
     res.sendStatus(404);

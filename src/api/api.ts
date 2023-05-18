@@ -15,11 +15,11 @@ const router = express.Router();
 const uploadPath = path.join(os.tmpdir(), '3dfilestore', 'uploads');
 const upload = multer({dest: uploadPath });
 
-router.get('/listFiles', listFiles);
-router.post('/uploadFile', upload.single('file'), recordFile);
-router.put('/renameFile', renameFile);
-router.delete('/deleteFile', deleteFile);
-router.get('/downloadFile', downloadFile);
-router.get('/transformFile', transformFile);
+router.get('/files', listFiles);
+router.post('/files', upload.single('file'), recordFile);
+router.put('/files', renameFile);
+router.delete('/files', deleteFile);
+router.get('/files/:fileId', downloadFile);
+router.get('/files/transform/:fileId/:scaleX/:scaleY/:scalyZ/:offsetX/:offsetY/:offsetZ', transformFile);
 
 export default router;

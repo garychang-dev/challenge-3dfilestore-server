@@ -5,13 +5,13 @@ import Transformer from '../transformer';
 const transformFile = async (req: Request, res: Response): Promise<void> => {
 
   try {
-    const fileId = req.query.fileId as string;
-    const scaleX = req.query.scaleX ? Number(req.query.scaleX) : 0;
-    const scaleY = req.query.scaleY ? Number(req.query.scaleY) : 0;
-    const scaleZ = req.query.scaleZ ? Number(req.query.scaleZ) : 0;
-    const offsetX = req.query.offsetX ? Number(req.query.offsetX) : 0;
-    const offsetY = req.query.offsetY ? Number(req.query.offsetY) : 0;
-    const offsetZ = req.query.offsetZ ? Number(req.query.offsetZ) : 0;
+    const fileId = req.params.fileId as string;
+    const scaleX = req.params.scaleX ? Number(req.params.scaleX) : 0;
+    const scaleY = req.params.scaleY ? Number(req.params.scaleY) : 0;
+    const scaleZ = req.params.scaleZ ? Number(req.params.scaleZ) : 0;
+    const offsetX = req.params.offsetX ? Number(req.params.offsetX) : 0;
+    const offsetY = req.params.offsetY ? Number(req.params.offsetY) : 0;
+    const offsetZ = req.params.offsetZ ? Number(req.params.offsetZ) : 0;
 
     if (!fileId) {
       console.log('Missing fileId param');
